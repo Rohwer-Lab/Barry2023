@@ -1,0 +1,15 @@
+name: barry-prx
+channels:
+  - conda-forge
+  - pysces
+dependencies:
+  - python=3.10
+  - pysces
+  - pandas
+  - scikit-learn
+  - notebook
+  - lmfit
+  - ipython
+  - ipywidgets
+  - dill
+  - sortedcontainers

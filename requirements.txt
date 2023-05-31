@@ -1,0 +1,10 @@
+pysces
+pandas
+scikit-learn
+notebook
+lmfit
+ipython
+ipywidgets
+identifiability
+dill
+sortedcontainers
