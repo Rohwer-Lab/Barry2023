@@ -13,3 +13,7 @@ dependencies:
   - ipywidgets
   - dill
   - sortedcontainers
+  - numpy
+  - scipy
+  - matplotlib
+  - assimulo
