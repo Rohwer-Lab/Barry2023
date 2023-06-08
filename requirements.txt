@@ -8,3 +8,7 @@ ipywidgets
 identifiability
 dill
 sortedcontainers
+numpy
+matplotlib
+scipy
+assimulo
