@@ -44,137 +44,81 @@ Note, however, that installation with `conda` (see above) is by far the easier o
 To reproduce the simulations, execute the Jupyter notebooks in the following 
 folders in sequence. The notebooks are annotated and documented to explain
 what is being done.
+1. `Prx_dim-dec_equi`
+    - **Writes:** Prx dimer-decamer equilibrium model (`Prx_dim-dec.psc`).
+    - **Analysis:** Prx equilibrium simulations
+    - **Plot:**  Figure 2
 
-\begin{enumerate}
-\item \textsf{Prx\_dim-dec\_equi}
-\begin{description}
-\item[Write:] Prx dimer-decamer equilibrium model
-(\textsf{Prx\_dim-dec.psc}).
-\item[Analysis:] Prx equilibrium simulations
-\item[Plot:] \textbf{Figure 2}
-\end{description}
 
-\item \textsf{fit\_PRXD1\_Kd}
-\begin{description}
-\item[Requires:] Prx dimer-decamer equilibrium model
-\item[Analysis:] fits the dimer-decamer equilibrium $K_d$ to Villar data.
-\item[Write:] fitted $K_d$
-(\textsf{fitted\_Kd\_PRDX1\_params.csv}).
-\end{description}
-*Note: Not part of the main text.
+2. \*`fit_PRXD1_Kd`
+    - **Requires:** Prx dimer-decamer equilibrium model
+    - **Analysis:** fits the dimer-decamer equilibrium $K_d$ to Villar data.
+    - **Writes:** fitted $K_d$ (`fitted_Kd_PRDX1_params.csv`).
+    - \*Note: Not part of the main text.
 
-\item \textsf{ITC\_data}
-\begin{description}
-\item[Requires:] digitized ITC data
-(\textsf{ITC\_data\_At.csv} and \textsf{ITC\_data\_PRDX1.csv}).
-\item[Analysis:] demonstrates ITC experimental data processing pipeline.
-\item[Write:] processed ITC data
-(\textsf{ITC\_data\_At\_processed.csv} and
-\textsf{ITC\_data\_PRDX1\_processed.csv}).
-\item[Plot:]\textbf{Figure S1}
-\end{description}
 
-\item \textsf{ITC\_model}
-\begin{description}
-\item[Write:] ITC Prx dimer-decamer equilibrium model
-(\textsf{ITC\_Prx\_dim-dec.psc}).
-\item[Write:] Barranco-Medina 2008 Fig.~1a \textit{Arabidopsis thaliana}
-injection parameters
-(\textsf{ITC\_At\_inject\_params.csv}).
-\item[Analysis:] demonstrates ITC simulation data processing pipeline.
-\item[Plot:]\textbf{Figure 3}
-\end{description}
+3. `ITC_data`
+    - **Requires:** digitized ITC data from Barranco-Medina 2008 (`ITC_data_At.csv` and `ITC_data_PRDX1.csv`).
+    - **Analysis:** demonstrates ITC experimental data processing pipeline.
+    - **Writes:** processed ITC data (`ITC_data_At_processed.csv` and `ITC_data_PRDX1_processed.csv`).
+    - **Plot:** Figure S1
 
-\item \textsf{fit\_PRDX1\_koff\_kon}
-\begin{description}
-\item[Requires:] ITC Prx dimer-decamer equilibrium model and processed ITC
-data.
-\item[Analysis:] fit the PRDX1 dimer-decamer association and disassociation
-rate constants to the processed digitized ITC data.
-\item[Write:] Barranco-Medina 2008 Fig.~1c PRDX1 injection parameters
-(\textsf{ITC\_PRDX1\_inject\_params.csv}).
-\item[Write:] PRDX1 dimer-decamer fitted parameters
-(\textsf{fitted\_koff\_kon\_PRDX1\_params.csv}).
-\item[*Write:] PRDX1 dimer-decamer $K_d$ and $k_{off}$ fit simultaneously
-(\textsf{fitted\_Kd\_koff\_kon\_PRDX1\_params.csv}).
-\item[*Analysis:] Identifiability analysis on the $K_d$ and $k_{off}$ fit
-simultaneously.
-\item[Plot:]\textbf{Figure 4}
-\end{description}
-*Not part of the main text
 
-\item \textsf{algorithm\_Prx\_decfull\_rxns}
-\begin{description}
-\item[Analysis:] Enumerates the peroxidase reactions of Prx decamers using the
-algorithm described in the text.
-\item[Write:] Prx decamer peroxidase reactions \emph{without} hyperoxidation
-(\textsf{Prx decamer reactions - no hyperoxidation.txt}).
-\item[Write:] Prx decamer peroxidase reactions \emph{with} hyperoxidation
-(\textsf{Prx decamer reactions - with hyperoxidation.txt}).
-\end{description}
+4. `ITC_model`
+    - **Writes:** ITC Prx dimer-decamer equilibrium model (`ITC_Prx_dim-dec.psc`).
+    - **Writes:** _Arabidopsis thaliana_ Prx ITC injection parameters from Barranco-Medina 2008 Fig. 1a (`ITC_At_inject_params.csv`).
+    - **Analysis:** demonstrates ITC simulation data processing pipeline.
+    - **Plot:** Figure 3
 
-\item \textsf{add\_rxns\_to\_RBC\_PRDX2\_models}
-\begin{description}
-\item[Requires:] Prx decamer peroxidase reactions \emph{without}
-hyperoxidation, Prx decamer peroxidase reactions \emph{with} hyperoxidation
-and RBC PRDX2 Model~A (\textsf{RBC\_PRDX2\_modelA.psc}).
-\item[Write:] RBC PRDX2 Model A with decamerisation \emph{without}
-decamer hyperoxidation (\textsf{RBC\_PRDX2\_modelA\_decfull.psc}).
-\item[Write:] RBC PRDX2 Model A with decamerisation \emph{with} decamer
-hyperoxidation (\textsf{RBC\_PRDX2\_modelA\_decfull\_hyp.psc}).
-\item Note: RBC PRDX2 Model~A with decamerisation and hyperoxidation was not
-carried forward in the analyses, as mentioned in the main text.
-\end{description}
 
-\item \textsf{RBC\_PRDX2\_sims}
-%Prx RBC model sims.ipynb
-\begin{description}
-\item[Requires:] RBC PRDX2 Model~A, RBC PRDX2 Model~B
-(\textsf{RBC\_PRDX2\_modelB.psc})
- and RBC PRDX2 Model~A with decamerisation as well as the PRDX1 dimer-decamer
-fitted parameters.
-\item[Analysis:] replicates the analyses of Benfeitas~et~al.~2014 comparing the
-three RBC PRDX2 models.
-\item[Plot:]\textbf{Figure 6} and \textbf{Figure S4-7}
-\end{description}
+5. `fit_PRDX1_koff_kon`
+    - **Requires** ITC Prx dimer-decamer equilibrium model and processed ITC data.
+    - **Analysis:** fit the PRDX1 dimer-decamer $k_{off}$ (and $k_{on}$) to the processed digitized ITC data.
+        - **Writes:** PRDX1 ITC injection parameters from Barranco-Medina 2008 Fig. 1c (`ITC_PRDX1_inject_params.csv`).
+        - **Writes:** PRDX1 dimer-decamer fitted parameters (`fitted_koff_kon_PRDX1_params.csv`).
+        - **Plot:** Figure 4
+    - **\*Analysis:** fit the PRDX1 dimer-decamer association $K_{d}$ and$k_{off}$ (and $k_{on}$) to the processed digitized ITC data.
+        - **Writes:** PRDX1 dimer-decamer $K_d$ and $k_{off}$ fit simultaneously (`fitted_Kd_koff_kon_PRDX1_params.csv`).
+        - **Analysis:** Identifiability analysis on the $K_d$ and $k_{off}$ fit simultaneously.
+        - \*Note: Not part of the main text
 
-\item \textsf{dilution\_assay}
-% Dilution time to equilibrium.ipynb
-\begin{description}
-\item[Requires:] PRDX1 dimer-decamer fitted parameters.
-\item[Write:] Prx dimer-decamer dilution model
-(\textsf{Prx\_dim-dec\_dil.psc}).
-\item[Analysis:] simulations of the time to equilibrium after diluting a Prx
-solution.
-\item[Plot:]\textbf{Figure S3} and \textbf{Figure 8a} and \textbf{Figure
-8b}
-\end{description}
 
-\item \textsf{HRP\_assay}
-%HRP assay with decamerisation.ipynb
-\begin{description}
-\item[Requires:] PRDX1 dimer-decamer fitted parameters and the Prx decamer
-peroxidase reactions \emph{without} hyperoxidation.
-\item[Write:] HRP Prx model (\textsf{HRP\_PRDX2.psc}) and
-the HRP Prx with decamerisation model
-(\textsf{HRP\_PRDX2\_decfull.psc}).
-\item[Analysis:] simulations of HRP competition assays with PRDX2.
-\item[Plot:]\textbf{Figure 7a} and \textbf{b} and \textbf{Figure 8c} and
-\textbf{d}
-\end{description}
+6. `algorithm_Prx_decfull_rxns`
+    - **Analysis:** Enumerates the peroxidase reactions of Prx decamers using the algorithm described in the text.
+    - **Writes:** Prx decamer peroxidase reactions _without_ hyperoxidation (`Prx decamer reactions - no hyperoxidation.txt`).
+    - **Writes:** Prx decamer peroxidase reactions _with_ hyperoxidation (`Prx decamer reactions - with hyperoxidation.txt`).
 
-\item \textsf{NADPH\_assay}
-%Whole system assay Prx cycle.ipynb
-\begin{description}
-\item[Requires:] PRDX1 dimer-decamer fitted parameters and the Prx decamer
-peroxidase reactions \emph{without} hyperoxidation.
-\item[Write:] PRDX2 cycle model (\textsf{PRDX2\_sys.psc})
-and PRDX2 cycle with decamerisation model
-(\textsf{PRDX2\_sys\_decfull.psc}).
-\item[Analysis:] simulations of  NADPH reduction assays in a system containing
-Prx, Trx, TRR, and H\textsubscript{2}O\textsubscript{2}.
-\item[Plot:]\textbf{Figure 7c} and \textbf{d}
-\end{description}
 
-\end{enumerate}
+7. `add_rxns_to_RBC_PRDX2_models`
+    - **Requires:** Prx decamer peroxidase reactions _without_ hyperoxidation, Prx decamer peroxidase reactions _with_ hyperoxidation and RBC PRDX2 Model A (`RBC_PRDX2_modelA.psc`).
+    - **Writes:** RBC PRDX2 Model A with decamerisation (`RBC_PRDX2_modelA_decfull.psc`).
+    - **Writes:** RBC PRDX2 Model A with decamerisation and decamer hyperoxidation (`RBC_PRDX2_modelA_decfull_hyp.psc`).
+    - Note: RBC PRDX2 Model A with decamerisation and decamer hyperoxidation was not carried forward in the analyses, as mentioned in the main text.
+
+
+8. `RBC_PRDX2_sims`
+    - **Requires:** RBC PRDX2 Model A, RBC PRDX2 Model B (`RBC_PRDX2_modelB.psc`) and RBC PRDX2 Model A with decamerisation as well as the PRDX1 dimer-decamer fitted parameters.
+    - **Analysis:** replicates the analyses of Benfeitas 2014 comparing the three RBC PRDX2 models.
+    - **Plot:** Figure 6 and S4-7
+
+
+9. `dilution_assay`
+    - **Requires:** PRDX1 dimer-decamer fitted parameters.
+    - **Writes:** Prx dimer-decamer dilution model (`Prx_dim-dec_dil.psc`).
+    - **Analysis:** simulations of the time to equilibrium after diluting a Prx solution.
+    - **Plot:** Figure S3, 8a, and 8b
+
+
+10. `HRP_assay`
+    - **Requires:** PRDX1 dimer-decamer fitted parameters and the Prx decamer peroxidase reactions _without_ hyperoxidation.
+    - **Writes:** HRP PRDX2 model (`HRP_PRDX2.psc`) and the HRP PRDX2 with decamerisation model (`HRP_PRDX2_decfull.psc`).
+    - **Analysis:** simulations of HRP competition assays with PRDX2.
+    - **Plot:** Figure 7a, 7b, 8c, and 8d
+
+
+11. `NADPH_assay`
+    - **Requires** PRDX1 dimer-decamer fitted parameters and the Prx decamer peroxidase reactions _without_ hyperoxidation.
+    - **Writes:** PRDX2 cycle model (`PRDX2_sys.psc`) and the PRDX2 cycle with decamerisation model (`PRDX2_sys_decfull.psc`).
+    - **Analysis:** simulations of  NADPH reduction assays in a system containing Prx, Trx, TRR, and $H_2O_2$.
+    - **Plot:** Figure 7c and 7d
 
