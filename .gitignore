@@ -103,3 +103,5 @@ ENV/
 # PySCeS temporary files
 _pys*parsetab.py
 
+# generated Figures
+Figures/

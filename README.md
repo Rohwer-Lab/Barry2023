@@ -32,7 +32,13 @@ with the Jupyter Notebook and a selection of libraries for scientific computatio
 It is best set up in a **separate virtual environment** using the requirement
 specifications provided, either for Anaconda, or using `pip` in a normal Python environment.
 
-### Anaconda Python distribution
+### Step 1: Clone this GitHub repository
+
+```bash
+git clone https://github.com/Rohwer-Lab/Barry2023.git
+```
+
+### Step 2a: Install Anaconda Python distribution
 
 By far the easiest way to set up the environment is using
 [Anaconda](https://www.anaconda.com/download). Dependencies are installed automatically.
@@ -42,7 +48,7 @@ conda activate barry-prx
 jupyter-notebook
 ```
 
-### Using Python and `pip`
+### <u>OR</u> Step 2b: Install requirements using Python and `pip`
 
 The simulations require the use of the `CVODE` solver, which is provided by the `Assimulo` Python package. 
 Unfortunately the Assimulo version on PyPI is *severely outdated*, so the package cannot be installed 
@@ -59,11 +65,6 @@ Note, however, that installation with `conda` (see above) is by far the easier o
 [PySCeS installation instructions](https://pyscesdocs.readthedocs.io/en/latest/userguide_doc.html#installing-and-configuring).
 
 ## Reproducing the simulations in the paper
-
-Clone this GitHub repository:
-```bash
-git clone https://github.com/Rohwer-Lab/Barry2023.git
-```
 
 To reproduce the simulations, execute the Jupyter notebooks in the following 
 folders in sequence. The notebooks are annotated and documented to explain
@@ -90,7 +91,7 @@ what is being done.
 
 4. `fit_PRDX1_koff_kon`
     - **Requires** ITC Prx dimer-decamer equilibrium model and processed ITC data.
-    - **Analysis:** fit the PRDX1 dimer-decamer $k_{off}$ (and $k_{on}$) to the processed digitized ITC data.
+    - **Analysis:** fit the PRDX1 dimer-decamer _k_~off~ (and $k_{on}$) to the processed digitized ITC data.
     - **Writes:** PRDX1 ITC injection parameters from Barranco-Medina 2008 Fig. 1c (`ITC_PRDX1_inject_params.csv`).
     - **Writes:** PRDX1 dimer-decamer fitted parameters (`fitted_koff_kon_PRDX1_params.csv`).
     - **Plot:** Figure 4
