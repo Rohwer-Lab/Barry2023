@@ -14,7 +14,7 @@ run the simulations on your own laptop or desktop computer.
 
 You can use Binder to run the Jupyter Notebooks online, by clicking on this badge:  
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rohwer-Lab/Barry2023.git/HEAD)  
-(**NOTE:** you will be directed to Binder, this will not open a new tab! You can use right-click -> `Open in new Tab`.  
+(**NOTE:** you will be directed to Binder, this will not open a new tab! You can use right-click -> `Open in new Tab`.
 When the Binder environment is created for the first time, it may take a while.)
   
 - This will start a JupyterLab session in your browser.
@@ -136,15 +136,18 @@ what is being done.
 
 ## Writing the models in the paper
 
-The models which form part of the text are provided as input files for PySCeS and SBML; however, since 
+The models that form part of the manuscript are provided as input files for PySCeS (`*.psc`) and in the standard 
+SBML format (`*.xml`) in the `models` folder. However, since 
 the algorithm to enumerate the peroxidase reactions of peroxiredoxin forms part of the main text,
-the scripts to enumerate these reactions are provided here together with scripts to generate PySCeS input files for all models in the paper.
+the scripts to enumerate these reactions are provided here together with scripts to generate PySCeS input files 
+for all models in the paper.
+
 To produce the models, execute the Jupyter notebooks in the following 
 folders in sequence. The notebooks are annotated and documented to explain
 what is being done. 
 
 1. `algorithm_Prx_decfull_rxns`
-    - **Analysis:** Enumerates the peroxidase reactions of Prx decamers using the algorithm described in the text.
+    - **Analysis:** Enumerates the peroxidase reactions of Prx decamers using the algorithm described in the manuscript.
     - **Writes:** Prx decamer peroxidase reactions _without_ hyperoxidation (`Prx decamer reactions - no hyperoxidation.txt`).
     - **Writes:** Prx decamer peroxidase reactions _with_ hyperoxidation (`Prx decamer reactions - with hyperoxidation.txt`).
 
