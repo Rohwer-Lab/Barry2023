@@ -100,3 +100,6 @@ ENV/
 # PyCharm project settings
 .idea/
 
+# PySCeS temporary files
+_pys*parsetab.py
+
