@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with PySCeS (1.0.3) on Tue, 13 Jun 2023 13:30:06 by chris -->
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
+  <model name="Prx_dim-dec">
+    <listOfUnitDefinitions>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1" offset="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1" offset="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1" offset="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1" offset="0"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1" offset="0"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="Cell" name="Cell" size="1"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="dimers" name="dimers" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="decamers" name="decamers" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="koff" name="koff" value="1"/>
+      <parameter id="exponent" name="exponent" value="5"/>
+      <parameter id="kon" name="kon" value="1"/>
+      <parameter id="Prx_total_dimers" name="Prx_total_dimers" value="10"/>
+      <parameter id="Kd_app" name="Kd_app" value="1.1"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="disso" name="disso" reversible="true">
+        <listOfReactants>
+          <speciesReference species="decamers" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="dimers" stoichiometry="5"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> decamers </ci>
+                <ci> koff </ci>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <power/>
+                  <ci> dimers </ci>
+                  <ci> exponent </ci>
+                </apply>
+                <ci> kon </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
