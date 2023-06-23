@@ -7,11 +7,29 @@ Submitted to _Antioxidants_
 This repository contains supplementary code, data and model descriptions to
 reproduce the simulations in the manuscript.
 
-## Set-up of computational environment
+You can run the Jupyter notebooks *online*, or set up a *local computational environment* to 
+run the simulations on your own laptop or desktop computer.
+
+## Running the Jupyter Notebooks online with Binder
+
+You can use Binder to run the Jupyter Notebooks online, by clicking on this badge:  
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Rohwer-Lab/Barry2023.git/HEAD)  
+(**NOTE:** you will be directed to Binder, this will not open a new tab! You can use right-click -> `Open in new Tab`.  
+When the Binder environment is created for the first time, it may take a while.)
+  
+- This will start a JupyterLab session in your browser.
+- On the left you find the folder structure. Double-click on the folder you want to open, e.g. `fit_PRDX1_koff_kon`. 
+- The Jupyter Notebooks have a small orange image icon. Double-click on the notebook you want to run.
+- Now you can interact with the notebook. To run all cells click the icon with the two arrows, left of `Download`, 
+  and click on Restart in the popup.
+- Each cell will automatically run from top to bottom. When a code cell was run a number appears in the brackets on the left.
+
+
+## Set-up of local computational environment
 
 Reproducing the simulations requires a working Python 3 (>=3.8) environment 
 with the Jupyter Notebook and a selection of libraries for scientific computation.
-It is best set up in a separate virtual environment using the requirement
+It is best set up in a **separate virtual environment** using the requirement
 specifications provided, either for Anaconda, or using `pip` in a normal Python environment.
 
 ### Anaconda Python distribution
@@ -21,7 +39,7 @@ By far the easiest way to set up the environment is using
 ```bash
 conda env create -f environment.yml
 conda activate barry-prx
-pip install identifiability
+jupyter-notebook
 ```
 
 ### Using Python and `pip`
@@ -34,6 +52,7 @@ with `pip`, but has to be compiled and built by hand
 Once Assimulo is built and installed, the other requirements can be installed with:
 ```bash
 pip install -r requirements.txt
+jupyter-notebook
 ```
 
 Note, however, that installation with `conda` (see above) is by far the easier option. See also 
