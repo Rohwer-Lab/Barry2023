@@ -60,6 +60,11 @@ Note, however, that installation with `conda` (see above) is by far the easier o
 
 ## Reproducing the simulations in the paper
 
+Clone this GitHub repository:
+```bash
+git clone https://github.com/Rohwer-Lab/Barry2023.git
+```
+
 To reproduce the simulations, execute the Jupyter notebooks in the following 
 folders in sequence. The notebooks are annotated and documented to explain
 what is being done.
