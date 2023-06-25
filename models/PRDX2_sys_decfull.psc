@@ -1173,7 +1173,7 @@ R270_disso:
 kprx = 100 # μM/s
 ksulf = 0.012 
 kcond = 1.7
-kred  = 0.21
+kred = 0.21
 
 TRR = 0.14
 kcat_TRR = 73

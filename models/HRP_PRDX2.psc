@@ -63,7 +63,6 @@ H2O2_production:
 kprx = 100.00 # μM/s
 ksulf = 0.012 
 kcond = 1.7
-kred  = 0.21
 
 k_HRP = 11.00 # μM/s
 
