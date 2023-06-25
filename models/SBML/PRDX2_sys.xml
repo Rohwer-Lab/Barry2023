@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with PySCeS (1.1.0) on Sun, 25 Jun 2023 12:40:12 by jr -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model name="PRDX2_sys">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="MM_irr_2S" name="MM_irr_2S">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> E </ci>
+            <ci> kcat </ci>
+            <apply>
+              <divide/>
+              <ci> s1 </ci>
+              <apply>
+                <plus/>
+                <ci> km_s1 </ci>
+                <ci> s1 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <ci> s2 </ci>
+              <apply>
+                <plus/>
+                <ci> km_s2 </ci>
+                <ci> s2 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="Cell" name="Cell" size="1" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="H2O2" name="H2O2" compartment="Cell" initialConcentration="4" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SH" name="SH_SH" compartment="Cell" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SOH" name="SH_SOH" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SS" name="SH_SS" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SO2H" name="SH_SO2H" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SOH_SOH" name="SOH_SOH" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SOH_SS" name="SOH_SS" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SOH_SO2H" name="SOH_SO2H" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SS_SS" name="SS_SS" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SS_SO2H" name="SS_SO2H" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SO2H_SO2H" name="SO2H_SO2H" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="TrxSH" name="TrxSH" compartment="Cell" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="TrxSOH" name="TrxSOH" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="NADPH" name="NADPH" compartment="Cell" initialConcentration="5" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="NADP" name="NADP" compartment="Cell" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="kprx" name="kprx" value="100" constant="false"/>
+      <parameter id="ksulf" name="ksulf" value="0.012" constant="false"/>
+      <parameter id="kcond" name="kcond" value="1.7" constant="false"/>
+      <parameter id="kred" name="kred" value="0.21" constant="false"/>
+      <parameter id="TRR" name="TRR" value="0.14" constant="false"/>
+      <parameter id="kcat_TRR" name="kcat_TRR" value="73" constant="false"/>
+      <parameter id="KM_TrxSOH_TRR" name="KM_TrxSOH_TRR" value="1.83" constant="false"/>
+      <parameter id="KM_NADPH_TRR" name="KM_NADPH_TRR" value="6" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="Prx_R_R_ox" name="Prx_R_R_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> kprx </ci>
+              <ci> SH_SH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_S_ox" name="Prx_R_S_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kprx </ci>
+              <ci> SH_SS </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O_ox" name="Prx_R_O_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kprx </ci>
+              <ci> SH_SOH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O2_ox" name="Prx_R_O2_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kprx </ci>
+              <ci> SH_SO2H </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O_oox" name="Prx_O_O_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> ksulf </ci>
+              <ci> SOH_SOH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_S_oox" name="Prx_O_S_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ksulf </ci>
+              <ci> SOH_SS </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O_oox" name="Prx_R_O_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ksulf </ci>
+              <ci> SH_SOH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O2_oox" name="Prx_O_O2_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SO2H_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ksulf </ci>
+              <ci> SOH_SO2H </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O_disulf_form" name="Prx_R_O_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kcond </ci>
+              <ci> SH_SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O_disulf_form" name="Prx_O_O_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> kcond </ci>
+              <ci> SOH_SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_S_disulf_form" name="Prx_O_S_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SS_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kcond </ci>
+              <ci> SOH_SS </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O2_disulf_form" name="Prx_O_O2_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kcond </ci>
+              <ci> SOH_SO2H </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_S_red_TrxSH" name="Prx_R_S_red_TrxSH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kred </ci>
+              <ci> SH_SS </ci>
+              <ci> TrxSH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_S_red_TrxSH" name="Prx_O_S_red_TrxSH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kred </ci>
+              <ci> SOH_SS </ci>
+              <ci> TrxSH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_S_S_red_TrxSH" name="Prx_S_S_red_TrxSH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SS_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> kred </ci>
+              <ci> SS_SS </ci>
+              <ci> TrxSH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_S_O2_red_TrxSH" name="Prx_S_O2_red_TrxSH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kred </ci>
+              <ci> SS_SO2H </ci>
+              <ci> TrxSH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_red1" name="Trx_red1" reversible="false">
+        <listOfReactants>
+          <speciesReference species="TrxSOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="NADPH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADP" stoichiometry="1" constant="true"/>
+          <speciesReference species="TrxSH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> MM_irr_2S </ci>
+              <ci> TRR </ci>
+              <ci> kcat_TRR </ci>
+              <ci> TrxSOH </ci>
+              <ci> KM_TrxSOH_TRR </ci>
+              <ci> NADPH </ci>
+              <ci> KM_NADPH_TRR </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="H2O2_production" name="H2O2_production" reversible="false">
+        <listOfProducts>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn> 0 </cn>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

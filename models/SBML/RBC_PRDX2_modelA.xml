@@ -1,0 +1,1904 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with PySCeS (1.1.0) on Sun, 25 Jun 2023 12:40:10 by jr -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model name="RBC_PRDX2_modelA">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="GPx1_1" name="GPx1_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> H2O2 </ci>
+              <ci> GSH </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> GSH </ci>
+                <ci> f1 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> H2O2 </ci>
+                <ci> f2 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="TrxR2_1" name="TrxR2_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> VMaxTrxR </ci>
+              <ci> NADPHfree </ci>
+              <ci> Trx1SOH_Trx2SOH </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> Trx1SOH_Trx2SOH </ci>
+                <ci> NADPHfree </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> KMNADPHTrxR </ci>
+                <ci> Trx1SOH_Trx2SOH </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> NADPHfree </ci>
+                <ci> KMTrx1SOH_Trx2SOH </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Henri_Michaelis_Menten__irreversible__1" name="Henri_Michaelis_Menten__irreversible__1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> V </ci>
+              <ci> NADPfree </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Km </ci>
+              <ci> NADPfree </ci>
+            </apply>
+          </apply>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="GSR_1" name="GSR_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> VMax </ci>
+              <ci> NADPHfree </ci>
+              <ci> GSSG </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> GSSG </ci>
+                <ci> NADPHfree </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> GSSG </ci>
+                <ci> KMNADPH </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> NADPHfree </ci>
+                <ci> KMGSSG </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Constant_flux__irreversible" name="Constant_flux__irreversible">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> v </ci>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Henri_Michaelis_Menten__irreversible" name="Henri_Michaelis_Menten__irreversible">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> V </ci>
+              <ci> substrate </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Km </ci>
+              <ci> substrate </ci>
+            </apply>
+          </apply>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="TrxR_1" name="TrxR_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> VMaxTrxR </ci>
+              <ci> NADPHfree </ci>
+              <ci> Trx1SOH_Trx2SH </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> Trx1SOH_Trx2SH </ci>
+                <ci> NADPHfree </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> KMNADPHTrxR </ci>
+                <ci> Trx1SOH_Trx2SH </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> NADPHfree </ci>
+                <ci> KMTrx1SOH_Trx2SH </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="Erythrocyte" name="Erythrocyte" size="1" constant="false"/>
+      <compartment id="Plasma" name="Plasma" size="1.70153417015" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="Cpd2" name="Cpd2" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="GSH" name="GSH" compartment="Erythrocyte" initialConcentration="3200" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="NADPfree" name="NADPfree" compartment="Erythrocyte" initialConcentration="0.1" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="H2O2" name="H2O2" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="Cpd1" name="Cpd1" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="Ferri" name="Ferri" compartment="Erythrocyte" initialConcentration="24.4" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="GSSG" name="GSSG" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="NADPHfree" name="NADPHfree" compartment="Erythrocyte" initialConcentration="2.61509433962" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SH" name="SH_SH" compartment="Erythrocyte" initialConcentration="285" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SOH" name="SH_SOH" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SO2H_SO2H" name="SO2H_SO2H" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SS_SO2H" name="SS_SO2H" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="NADPHbound" name="NADPHbound" compartment="Erythrocyte" initialConcentration="25.1049056604" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SOH_SOH" name="SOH_SOH" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SOH_SS" name="SOH_SS" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SOH_SO2H" name="SOH_SO2H" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SS_SS" name="SS_SS" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SS" name="SH_SS" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="SH_SO2H" name="SH_SO2H" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="Trx1SH_Trx2SOH" name="Trx1SH_Trx2SOH" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="Trx1SH_Trx2SH" name="Trx1SH_Trx2SH" compartment="Erythrocyte" initialConcentration="0.56" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="Trx1SOH_Trx2SOH" name="Trx1SOH_Trx2SOH" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="Trx1SOH_Trx2SH" name="Trx1SOH_Trx2SH" compartment="Erythrocyte" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="NADPbound" name="NADPbound" compartment="Erythrocyte" initialConcentration="0.18" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="eH2O2" name="eH2O2" compartment="Plasma" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="two_times_kprx" name="two_times_kprx" value="200" constant="false"/>
+      <parameter id="kprx" name="kprx" value="100" constant="false"/>
+      <parameter id="two_times_ksulf" name="two_times_ksulf" value="0.024" constant="false"/>
+      <parameter id="ksulf" name="ksulf" value="0.012" constant="false"/>
+      <parameter id="kcond" name="kcond" value="1.7" constant="false"/>
+      <parameter id="two_times_kcond" name="two_times_kcond" value="3.4" constant="false"/>
+      <parameter id="kred" name="kred" value="0.21" constant="false"/>
+      <parameter id="two_times_kred" name="two_times_kred" value="0.42" constant="false"/>
+      <parameter id="ksrx" name="ksrx" value="0.0001" constant="false"/>
+      <parameter id="two_times_ksrx" name="two_times_ksrx" value="0.0002" constant="false"/>
+      <parameter id="VMaxTrxR" name="VMaxTrxR" value="10" constant="false"/>
+      <parameter id="KMNADPHTrxR" name="KMNADPHTrxR" value="6" constant="false"/>
+      <parameter id="KMTrx1SOH_Trx2SH" name="KMTrx1SOH_Trx2SH" value="1.83" constant="false"/>
+      <parameter id="KMTrx1SOH_Trx2SOH" name="KMTrx1SOH_Trx2SOH" value="1830" constant="false"/>
+      <parameter id="ktrx_div_Ktrx1" name="ktrx_div_Ktrx1" value="0.0042" constant="false"/>
+      <parameter id="two_times_ktrx" name="two_times_ktrx" value="0.42" constant="false"/>
+      <parameter id="ktrx" name="ktrx" value="0.21" constant="false"/>
+      <parameter id="two_times_ktrx_div_Ktrx1" name="two_times_ktrx_div_Ktrx1" value="0.0084" constant="false"/>
+      <parameter id="Cat_1_k1" name="Cat_1_k1" value="6" constant="false"/>
+      <parameter id="Cat_2_k1" name="Cat_2_k1" value="18" constant="false"/>
+      <parameter id="Cat_3_k1" name="Cat_3_k1" value="0.011" constant="false"/>
+      <parameter id="Cat_4_k1" name="Cat_4_k1" value="73900" constant="false"/>
+      <parameter id="GPx1_f1" name="GPx1_f1" value="0.0399" constant="false"/>
+      <parameter id="GPx1_f2" name="GPx1_f2" value="9.72" constant="false"/>
+      <parameter id="GSR_KMGSSG" name="GSR_KMGSSG" value="65" constant="false"/>
+      <parameter id="GSR_KMNADPH" name="GSR_KMNADPH" value="8.5" constant="false"/>
+      <parameter id="GSR_VMax" name="GSR_VMax" value="49" constant="false"/>
+      <parameter id="NADP_reduction_Km" name="NADP_reduction_Km" value="0.45" constant="false"/>
+      <parameter id="NADP_reduction_V" name="NADP_reduction_V" value="2.4" constant="false"/>
+      <parameter id="k_NADPHsequest" name="k_NADPHsequest" value="96000000" constant="false"/>
+      <parameter id="k__sequest" name="k__sequest" value="10000000" constant="false"/>
+      <parameter id="k_NADPsequest" name="k_NADPsequest" value="18000000" constant="false"/>
+      <parameter id="H2O2_production_v" name="H2O2_production_v" value="0.0895" constant="false"/>
+      <parameter id="H2O2_perm" name="H2O2_perm" value="10.9" constant="false"/>
+      <parameter id="fix_eH2O2" name="fix_eH2O2" value="0" constant="false"/>
+      <parameter id="unfix_eH2O2" name="unfix_eH2O2" value="1" constant="false"/>
+      <parameter id="exH2O2_pulse_length" name="exH2O2_pulse_length" value="0" constant="false"/>
+      <parameter id="exH2O2_pulse_conc" name="exH2O2_pulse_conc" value="0" constant="false"/>
+      <parameter id="do_exH2O2_pulse" name="do_exH2O2_pulse" value="0" constant="false"/>
+      <parameter id="extH2O2" name="extH2O2" value="0" constant="false"/>
+      <parameter id="init_for_kprx" name="init_for_kprx" value="100" constant="false"/>
+      <parameter id="init_for_kcond" name="init_for_kcond" value="1.7" constant="false"/>
+      <parameter id="init_for_ksulf" name="init_for_ksulf" value="0.012" constant="false"/>
+      <parameter id="kPrx2Activ" name="kPrx2Activ" value="10000000" constant="false"/>
+      <parameter id="init_for_kPrx2Activ" name="init_for_kPrx2Activ" value="10000000" constant="false"/>
+      <parameter id="init_for_KPrx2" name="init_for_KPrx2" value="166.9" constant="false"/>
+      <parameter id="KNADPHsequest" name="KNADPHsequest" value="9.6" constant="false"/>
+      <parameter id="KNADPsequest" name="KNADPsequest" value="1.8" constant="false"/>
+      <parameter id="Compartment_1" name="Compartment_1" value="7.17e-14" constant="false"/>
+      <parameter id="E_NADPH" name="E_NADPH" value="-0.363658610709" constant="false"/>
+      <parameter id="NADPtot" name="NADPtot" value="28" constant="false"/>
+      <parameter id="Trxtot" name="Trxtot" value="0.56" constant="false"/>
+      <parameter id="Prx2tot" name="Prx2tot" value="285" constant="false"/>
+      <parameter id="GStot" name="GStot" value="3200" constant="false"/>
+      <parameter id="Cattot" name="Cattot" value="24.4" constant="false"/>
+      <parameter id="init_for_KTrx1" name="init_for_KTrx1" value="50" constant="false"/>
+      <parameter id="init_for_ksrx" name="init_for_ksrx" value="0.0001" constant="false"/>
+      <parameter id="init_for_kred" name="init_for_kred" value="0.21" constant="false"/>
+      <parameter id="E0_Trx" name="E0_Trx" value="-0.23" constant="false"/>
+      <parameter id="E0_GSH" name="E0_GSH" value="-0.24" constant="false"/>
+      <parameter id="KTrx1" name="KTrx1" value="50" constant="false"/>
+      <parameter id="init_for_ktrx" name="init_for_ktrx" value="0.21" constant="false"/>
+      <parameter id="E0_NADPH" name="E0_NADPH" value="-0.32" constant="false"/>
+      <parameter id="KPrx2" name="KPrx2" value="166.9" constant="false"/>
+      <parameter id="init_for_KNADPsequest" name="init_for_KNADPsequest" value="1.8" constant="false"/>
+      <parameter id="init_for_k__sequest" name="init_for_k__sequest" value="10000000" constant="false"/>
+      <parameter id="init_for_KNADPHsequest" name="init_for_KNADPHsequest" value="9.6" constant="false"/>
+      <parameter id="v_GPx1" name="v_GPx1" value="0" constant="false"/>
+      <parameter id="kPrx2Inactiv" name="kPrx2Inactiv" value="1669000000" constant="false"/>
+      <parameter id="f_PSO2H" name="f_PSO2H" value="0" constant="false"/>
+      <parameter id="v_H2O2_prod" name="v_H2O2_prod" value="0" constant="false"/>
+      <parameter id="v_H2O2_consumption" name="v_H2O2_consumption" value="0" constant="false"/>
+      <parameter id="v_Cat" name="v_Cat" value="0" constant="false"/>
+      <parameter id="f_NADPH" name="f_NADPH" value="0.963168867269" constant="false"/>
+      <parameter id="v_Prx2" name="v_Prx2" value="0" constant="false"/>
+      <parameter id="f_PSS" name="f_PSS" value="0" constant="false"/>
+      <parameter id="f_1SS" name="f_1SS" value="0" constant="false"/>
+      <parameter id="t_dimers" name="t_dimers" value="285" constant="false"/>
+      <parameter id="t_1SS" name="t_1SS" value="0" constant="false"/>
+      <parameter id="t_2SS" name="t_2SS" value="0" constant="false"/>
+      <parameter id="f_PSOH" name="f_PSOH" value="0" constant="false"/>
+      <parameter id="init_for_two_times_ktrx" name="init_for_two_times_ktrx" value="0.42" constant="false"/>
+      <parameter id="t_PSO2H" name="t_PSO2H" value="0" constant="false"/>
+      <parameter id="f_PSH" name="f_PSH" value="1" constant="false"/>
+      <parameter id="f_TrxOO" name="f_TrxOO" value="0" constant="false"/>
+      <parameter id="f_TrxOR" name="f_TrxOR" value="0" constant="false"/>
+      <parameter id="v_NADPH" name="v_NADPH" value="0" constant="false"/>
+      <parameter id="f_TrxR_star" name="f_TrxR_star" value="1" constant="false"/>
+      <parameter id="t_Trx" name="t_Trx" value="0.56" constant="false"/>
+      <parameter id="f_2SS" name="f_2SS" value="0" constant="false"/>
+      <parameter id="f_TrxRO" name="f_TrxRO" value="0" constant="false"/>
+      <parameter id="f_TrxRR" name="f_TrxRR" value="1" constant="false"/>
+      <parameter id="fv_Cat" name="fv_Cat" value="0" constant="false"/>
+      <parameter id="f_NADPH_TrxR" name="f_NADPH_TrxR" value="0" constant="false"/>
+      <parameter id="NADPH_div_H2O2" name="NADPH_div_H2O2" value="0" constant="false"/>
+      <parameter id="r_NADPH_free" name="r_NADPH_free" value="26.1509433962" constant="false"/>
+      <parameter id="r_NADPH_all" name="r_NADPH_all" value="99" constant="false"/>
+      <parameter id="f_GSH" name="f_GSH" value="1" constant="false"/>
+      <parameter id="f_Prx2_Inhib" name="f_Prx2_Inhib" value="1" constant="false"/>
+      <parameter id="t_PSS" name="t_PSS" value="0" constant="false"/>
+      <parameter id="vPrx2_div_vCat" name="vPrx2_div_vCat" value="0" constant="false"/>
+      <parameter id="fv_Prx2" name="fv_Prx2" value="0" constant="false"/>
+      <parameter id="t_PSH" name="t_PSH" value="570" constant="false"/>
+      <parameter id="t_PSOH" name="t_PSOH" value="0" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="two_times_kprx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 2 </cn>
+            <ci> init_for_kprx </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="two_times_ksulf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 2 </cn>
+            <ci> init_for_ksulf </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="two_times_kcond">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 2 </cn>
+            <ci> init_for_kcond </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="two_times_kred">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 2 </cn>
+            <ci> init_for_kred </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="two_times_ksrx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 2 </cn>
+            <ci> init_for_ksrx </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="KMTrx1SOH_Trx2SOH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 1000 </cn>
+            <ci> KMTrx1SOH_Trx2SH </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="ktrx_div_Ktrx1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> init_for_ktrx </ci>
+            <ci> init_for_KTrx1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="two_times_ktrx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 2 </cn>
+            <ci> init_for_ktrx </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="two_times_ktrx_div_Ktrx1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> init_for_two_times_ktrx </ci>
+            <ci> init_for_KTrx1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="k_NADPHsequest">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> init_for_k__sequest </ci>
+            <ci> init_for_KNADPHsequest </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="k_NADPsequest">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> init_for_k__sequest </ci>
+            <ci> init_for_KNADPsequest </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="extH2O2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <ci> eH2O2 </ci>
+              <ci> unfix_eH2O2 </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> exH2O2_pulse_conc </ci>
+              <ci> fix_eH2O2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v_GPx1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> GPx1 </ci>
+            <ci> Erythrocyte </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="kPrx2Inactiv">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> init_for_kPrx2Activ </ci>
+            <ci> init_for_KPrx2 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_PSO2H">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> t_PSO2H </ci>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> t_dimers </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v_H2O2_prod">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> H2O2_production </ci>
+            <ci> Erythrocyte </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v_H2O2_consumption">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> v_Cat </ci>
+            <ci> v_GPx1 </ci>
+            <ci> v_Prx2 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v_Cat">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci> Cat_1 </ci>
+              <ci> Cat_2 </ci>
+            </apply>
+            <ci> Erythrocyte </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_NADPH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> NADPHfree </ci>
+            <apply>
+              <plus/>
+              <ci> NADPfree </ci>
+              <ci> NADPHfree </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v_Prx2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci> Prx_R_R_ox </ci>
+              <ci> Prx_O_S_oox </ci>
+              <ci> Prx_R_O2_ox </ci>
+              <ci> Prx_O_O2_oox </ci>
+              <ci> Prx_R_O_ox </ci>
+              <ci> Prx_R_O_oox </ci>
+              <ci> Prx_R_S_ox </ci>
+              <ci> Prx_O_O_oox </ci>
+            </apply>
+            <ci> Erythrocyte </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_PSS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> t_PSS </ci>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> t_dimers </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_1SS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> t_1SS </ci>
+            <ci> t_dimers </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_dimers">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> SH_SH </ci>
+            <ci> SH_SO2H </ci>
+            <ci> SO2H_SO2H </ci>
+            <ci> SOH_SO2H </ci>
+            <ci> SS_SO2H </ci>
+            <ci> SH_SOH </ci>
+            <ci> SOH_SOH </ci>
+            <ci> SH_SS </ci>
+            <ci> SOH_SS </ci>
+            <ci> SS_SS </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_1SS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> SH_SS </ci>
+            <ci> SOH_SS </ci>
+            <ci> SS_SO2H </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_2SS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> SS_SS </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_PSOH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> t_PSOH </ci>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> t_dimers </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_PSO2H">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> SO2H_SO2H </ci>
+            </apply>
+            <ci> SH_SO2H </ci>
+            <ci> SOH_SO2H </ci>
+            <ci> SS_SO2H </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_PSH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> t_PSH </ci>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> t_dimers </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_TrxOO">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> Trx1SOH_Trx2SOH </ci>
+            <ci> t_Trx </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_TrxOR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> Trx1SOH_Trx2SH </ci>
+            <ci> t_Trx </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v_NADPH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci> Trx_red1 </ci>
+              <ci> Trx_red2 </ci>
+            </apply>
+            <ci> Erythrocyte </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_TrxR_star">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> f_TrxRR </ci>
+            <ci> f_TrxRO </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_Trx">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> Trx1SH_Trx2SH </ci>
+            <ci> Trx1SH_Trx2SOH </ci>
+            <ci> Trx1SOH_Trx2SH </ci>
+            <ci> Trx1SOH_Trx2SOH </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_2SS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> t_2SS </ci>
+            <ci> t_dimers </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_TrxRO">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> Trx1SH_Trx2SOH </ci>
+            <ci> t_Trx </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_TrxRR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> Trx1SH_Trx2SH </ci>
+            <ci> t_Trx </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="fv_Cat">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> v_Cat </ci>
+            <ci> v_H2O2_consumption </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_NADPH_TrxR">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> Trx_red1 </ci>
+            <apply>
+              <plus/>
+              <ci> Trx_red1 </ci>
+              <ci> GSR </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NADPH_div_H2O2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> NADP_reduction </ci>
+            <apply>
+              <plus/>
+              <ci> Cat_1 </ci>
+              <ci> Cat_2 </ci>
+              <ci> GPx1 </ci>
+              <ci> Prx_R_R_ox </ci>
+              <ci> Prx_R_O_ox </ci>
+              <ci> Prx_R_O_oox </ci>
+              <ci> Prx_R_S_ox </ci>
+              <ci> Prx_O_O_oox </ci>
+              <ci> Prx_O_S_oox </ci>
+              <ci> Prx_R_O2_ox </ci>
+              <ci> Prx_O_O2_oox </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="r_NADPH_all">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <ci> NADPHfree </ci>
+              <ci> NADPHbound </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> NADPfree </ci>
+              <ci> NADPbound </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="f_GSH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> GSH </ci>
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <cn> 2 </cn>
+                <ci> GSSG </ci>
+              </apply>
+              <ci> GSH </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_PSS">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> SS_SS </ci>
+            </apply>
+            <ci> SH_SS </ci>
+            <ci> SOH_SS </ci>
+            <ci> SS_SO2H </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="vPrx2_div_vCat">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> v_Prx2 </ci>
+            <ci> v_Cat </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="fv_Prx2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> v_Prx2 </ci>
+            <ci> v_H2O2_consumption </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_PSH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> SH_SH </ci>
+            </apply>
+            <ci> SH_SO2H </ci>
+            <ci> SH_SOH </ci>
+            <ci> SH_SS </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="t_PSOH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <cn> 2 </cn>
+              <ci> SOH_SOH </ci>
+            </apply>
+            <ci> SH_SOH </ci>
+            <ci> SOH_SO2H </ci>
+            <ci> SOH_SS </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="Prx_R_R_ox" name="Prx_R_R_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_kprx </ci>
+              <ci> SH_SH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_S_ox" name="Prx_R_S_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kprx </ci>
+              <ci> SH_SS </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O_ox" name="Prx_R_O_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kprx </ci>
+              <ci> SH_SOH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O2_ox" name="Prx_R_O2_ox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kprx </ci>
+              <ci> SH_SO2H </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O_oox" name="Prx_O_O_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+          <speciesReference species="SOH_SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_ksulf </ci>
+              <ci> SOH_SOH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_S_oox" name="Prx_O_S_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ksulf </ci>
+              <ci> SOH_SS </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O_oox" name="Prx_R_O_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ksulf </ci>
+              <ci> SH_SOH </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O2_oox" name="Prx_O_O2_oox" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SO2H_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ksulf </ci>
+              <ci> SOH_SO2H </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O_disulf_form" name="Prx_R_O_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kcond </ci>
+              <ci> SH_SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O_disulf_form" name="Prx_O_O_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_kcond </ci>
+              <ci> SOH_SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_S_disulf_form" name="Prx_O_S_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SS_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kcond </ci>
+              <ci> SOH_SS </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O2_disulf_form" name="Prx_O_O2_disulf_form" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kcond </ci>
+              <ci> SOH_SO2H </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_S_red__Trx1SH_Trx2SH" name="Prx_R_S_red__Trx1SH_Trx2SH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kred </ci>
+              <ci> SH_SS </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_S_red_Trx1SH_Trx2SOH" name="Prx_R_S_red_Trx1SH_Trx2SOH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kred </ci>
+              <ci> SH_SS </ci>
+              <ci> Trx1SH_Trx2SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_S_red_Trx1SH_Trx2SH" name="Prx_O_S_red_Trx1SH_Trx2SH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kred </ci>
+              <ci> SOH_SS </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_S_red_Trx1SH_Trx2SOH" name="Prx_O_S_red_Trx1SH_Trx2SOH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kred </ci>
+              <ci> SOH_SS </ci>
+              <ci> Trx1SH_Trx2SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_S_S_red_Trx1SH_Trx2SH" name="Prx_S_S_red_Trx1SH_Trx2SH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SS_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_kred </ci>
+              <ci> SS_SS </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_S_S_red_Trx1SH_Trx2SOH" name="Prx_S_S_red_Trx1SH_Trx2SOH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SS_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SS" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_kred </ci>
+              <ci> SS_SS </ci>
+              <ci> Trx1SH_Trx2SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_S_O2_red_Trx1SH_Trx2SH" name="Prx_S_O2_red_Trx1SH_Trx2SH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kred </ci>
+              <ci> SS_SO2H </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_S_O2_red_Trx1SH_Trx2SOH" name="Prx_S_O2_red_Trx1SH_Trx2SOH" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> kred </ci>
+              <ci> SS_SO2H </ci>
+              <ci> Trx1SH_Trx2SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_R_O2_srx" name="Prx_R_O2_srx" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SH_SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ksrx </ci>
+              <ci> SH_SO2H </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O_O2_srx" name="Prx_O_O2_srx" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ksrx </ci>
+              <ci> SOH_SO2H </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_S_O2_srx" name="Prx_S_O2_srx" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SS_SO2H" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SS" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ksrx </ci>
+              <ci> SS_SO2H </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Prx_O2_O2_srx" name="Prx_O2_O2_srx" reversible="false">
+        <listOfReactants>
+          <speciesReference species="SO2H_SO2H" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="SOH_SO2H" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_ksrx </ci>
+              <ci> SO2H_SO2H </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_red1" name="Trx_red1" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="NADPHfree" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADPfree" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <ci> TrxR_1 </ci>
+                <ci> VMaxTrxR </ci>
+                <ci> KMNADPHTrxR </ci>
+                <ci> KMTrx1SOH_Trx2SH </ci>
+                <ci> NADPHfree </ci>
+                <ci> Trx1SOH_Trx2SH </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_red2" name="Trx_red2" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+          <speciesReference species="NADPHfree" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADPfree" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <ci> TrxR2_1 </ci>
+                <ci> VMaxTrxR </ci>
+                <ci> KMNADPHTrxR </ci>
+                <ci> KMTrx1SOH_Trx2SOH </ci>
+                <ci> Trx1SOH_Trx2SOH </ci>
+                <ci> NADPHfree </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_R_R_Trx_O_O_swi" name="Trx_R_R_Trx_O_O_swi" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ktrx_div_Ktrx1 </ci>
+              <ci> Trx1SOH_Trx2SOH </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_R_O_Trx_R_O_swi" name="Trx_R_O_Trx_R_O_swi" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_ktrx </ci>
+              <apply>
+                <power/>
+                <ci> Trx1SH_Trx2SOH </ci>
+                <cn> 2 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_O_R_Trx_R_O_swi" name="Trx_O_R_Trx_R_O_swi" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ktrx </ci>
+              <ci> Trx1SOH_Trx2SH </ci>
+              <ci> Trx1SH_Trx2SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_R_R_Trx_R_O_swi" name="Trx_R_R_Trx_R_O_swi" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="2" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ktrx </ci>
+              <ci> Trx1SOH_Trx2SOH </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_O_R_Trx_O_R_swi" name="Trx_O_R_Trx_O_R_swi" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="2" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SH_Trx2SH" stoichiometry="1" constant="true"/>
+          <speciesReference species="Trx1SOH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> two_times_ktrx_div_Ktrx1 </ci>
+              <apply>
+                <power/>
+                <ci> Trx1SOH_Trx2SH </ci>
+                <cn> 2 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_O_R_swi" name="Trx_O_R_swi" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Trx1SOH_Trx2SOH"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ktrx_div_Ktrx1 </ci>
+              <ci> Trx1SOH_Trx2SOH </ci>
+              <ci> Trx1SOH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_R_O_swi" name="Trx_R_O_swi" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Trx1SOH_Trx2SOH"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ktrx </ci>
+              <ci> Trx1SOH_Trx2SOH </ci>
+              <ci> Trx1SH_Trx2SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_R_O_swi1" name="Trx_R_O_swi1" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Trx1SH_Trx2SH"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ktrx </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+              <ci> Trx1SH_Trx2SOH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Trx_O_R_swi2" name="Trx_O_R_swi2" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Trx1SOH_Trx2SH" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Trx1SH_Trx2SOH" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="Trx1SH_Trx2SH"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> ktrx_div_Ktrx1 </ci>
+              <ci> Trx1SH_Trx2SH </ci>
+              <ci> Trx1SOH_Trx2SH </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Cat_1" name="Cat_1" reversible="false">
+        <listOfReactants>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+          <speciesReference species="Ferri" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Cpd1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> Cat_1_k1 </ci>
+              <ci> Ferri </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Cat_2" name="Cat_2" reversible="false">
+        <listOfReactants>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+          <speciesReference species="Cpd1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ferri" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> Cat_2_k1 </ci>
+              <ci> Cpd1 </ci>
+              <ci> H2O2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Cat_3" name="Cat_3" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Cpd1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Cpd2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> Cat_3_k1 </ci>
+              <ci> Cpd1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Cat_4" name="Cat_4" reversible="false">
+        <listOfReactants>
+          <speciesReference species="Cpd2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Ferri" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <ci> Cat_4_k1 </ci>
+              <ci> Cpd2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="GPx1" name="GPx1" reversible="false">
+        <listOfReactants>
+          <speciesReference species="GSH" stoichiometry="2" constant="true"/>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GSSG" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <ci> GPx1_1 </ci>
+                <ci> GPx1_f1 </ci>
+                <ci> GPx1_f2 </ci>
+                <ci> H2O2 </ci>
+                <ci> GSH </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="GSR" name="GSR" reversible="false">
+        <listOfReactants>
+          <speciesReference species="GSSG" stoichiometry="1" constant="true"/>
+          <speciesReference species="NADPHfree" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GSH" stoichiometry="2" constant="true"/>
+          <speciesReference species="NADPfree" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <ci> GSR_1 </ci>
+                <ci> GSR_KMGSSG </ci>
+                <ci> GSR_KMNADPH </ci>
+                <ci> GSR_VMax </ci>
+                <ci> GSSG </ci>
+                <ci> NADPHfree </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="NADP_reduction" name="NADP_reduction" reversible="false">
+        <listOfReactants>
+          <speciesReference species="NADPfree" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADPHfree" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <ci> Henri_Michaelis_Menten__irreversible__1 </ci>
+                <ci> NADP_reduction_Km </ci>
+                <ci> NADP_reduction_V </ci>
+                <ci> NADPfree </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="NADPH_sequestration" name="NADPH_sequestration" reversible="true">
+        <listOfReactants>
+          <speciesReference species="NADPHfree" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADPHbound" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k_NADPHsequest </ci>
+                  <ci> NADPHfree </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k__sequest </ci>
+                  <ci> NADPHbound </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="NADP_sequestration" name="NADP_sequestration" reversible="true">
+        <listOfReactants>
+          <speciesReference species="NADPfree" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADPbound" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> k_NADPsequest </ci>
+                  <ci> NADPfree </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> k__sequest </ci>
+                  <ci> NADPbound </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="H2O2_production" name="H2O2_production" reversible="false">
+        <listOfProducts>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> Erythrocyte </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> H2O2_production_v </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="H2O2_permeation" name="H2O2_permeation" reversible="true">
+        <listOfReactants>
+          <speciesReference species="eH2O2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="H2O2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> eH2O2 </ci>
+                <ci> H2O2_perm </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> H2O2 </ci>
+                <ci> H2O2_perm </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="eH2O2pulse_start" name="eH2O2pulse_start" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:ns1="http://www.sbml.org/sbml/symbols/time">
+            <apply>
+              <and/>
+              <apply>
+                <lt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <ci> exH2O2_pulse_length </ci>
+              </apply>
+              <apply>
+                <eq/>
+                <ci> do_exH2O2_pulse </ci>
+                <true/>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn> 5 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment variable="fix_eH2O2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment variable="unfix_eH2O2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="eH2O2pulse_end" name="eH2O2pulse_end" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:ns1="http://www.sbml.org/sbml/symbols/time">
+            <apply>
+              <and/>
+              <apply>
+                <gt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <ci> exH2O2_pulse_length </ci>
+              </apply>
+              <apply>
+                <eq/>
+                <ci> do_exH2O2_pulse </ci>
+                <true/>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <delay>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <cn> 5 </cn>
+          </math>
+        </delay>
+        <listOfEventAssignments>
+          <eventAssignment variable="fix_eH2O2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment variable="unfix_eH2O2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment variable="eH2O2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

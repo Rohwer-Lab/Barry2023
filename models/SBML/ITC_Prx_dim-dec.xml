@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with PySCeS (1.1.0) on Sun, 25 Jun 2023 12:40:11 by jr -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model name="ITC_Prx_dim-dec">
+    <listOfUnitDefinitions>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume" name="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="length" name="length">
+        <listOfUnits>
+          <unit kind="metre" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area" name="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="cell_volume" name="cell_volume" size="1400" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="dimers" name="dimers" compartment="cell_volume" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+      <species id="decamers" name="decamers" compartment="cell_volume" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="koff" name="koff" value="1" constant="false"/>
+      <parameter id="kon" name="kon" value="1" constant="false"/>
+      <parameter id="exponent" name="exponent" value="130" constant="false"/>
+      <parameter id="Kd_app" name="Kd_app" value="1" constant="false"/>
+      <parameter id="injection_volume" name="injection_volume" value="1.6" constant="false"/>
+      <parameter id="injection_dimer" name="injection_dimer" value="0.8" constant="false"/>
+      <parameter id="injection_decamer" name="injection_decamer" value="6.84" constant="false"/>
+      <parameter id="injection_interval" name="injection_interval" value="180" constant="false"/>
+      <parameter id="first_inject_ratio" name="first_inject_ratio" value="1" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="Disassociation" name="Disassociation" reversible="true">
+        <listOfReactants>
+          <speciesReference species="decamers" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="dimers" stoichiometry="5" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <minus/>
+              <apply>
+                <times/>
+                <ci> koff </ci>
+                <ci> decamers </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> kon </ci>
+                <apply>
+                  <power/>
+                  <ci> dimers </ci>
+                  <ci> exponent </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="first_injection_prot" name="first_injection_prot" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:ns1="http://www.sbml.org/sbml/symbols/time">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn> 0 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="dimers">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <divide/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> dimers </ci>
+                    <ci> cell_volume </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> first_inject_ratio </ci>
+                    <ci> injection_dimer </ci>
+                    <ci> injection_volume </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> first_inject_ratio </ci>
+                    <ci> injection_decamer </ci>
+                    <ci> injection_volume </ci>
+                    <cn type="integer"> 5 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> cell_volume </ci>
+                  <ci> injection_volume </ci>
+                </apply>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="first_injection_vol" name="first_injection_vol" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:ns1="http://www.sbml.org/sbml/symbols/time">
+            <apply>
+              <gt/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <cn> 0 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="cell_volume">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <plus/>
+                <ci> cell_volume </ci>
+                <ci> injection_volume </ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="injection_prot" name="injection_prot" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:ns1="http://www.sbml.org/sbml/symbols/time">
+            <apply>
+              <gt/>
+              <apply>
+                <cos/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                      <cn> 1 </cn>
+                    </apply>
+                    <cn> 2 </cn>
+                    <pi/>
+                  </apply>
+                  <ci> injection_interval </ci>
+                </apply>
+              </apply>
+              <cn> 0.99999999999 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="decamers">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <divide/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> decamers </ci>
+                    <ci> cell_volume </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> injection_decamer </ci>
+                    <ci> injection_volume </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> cell_volume </ci>
+                  <ci> injection_volume </ci>
+                </apply>
+              </apply>
+            </math>
+          </eventAssignment>
+          <eventAssignment variable="dimers">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <divide/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> dimers </ci>
+                    <ci> cell_volume </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> injection_dimer </ci>
+                    <ci> injection_volume </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> cell_volume </ci>
+                  <ci> injection_volume </ci>
+                </apply>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="injection_vol" name="injection_vol" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:ns1="http://www.sbml.org/sbml/symbols/time">
+            <apply>
+              <gt/>
+              <apply>
+                <cos/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <minus/>
+                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                      <cn> 1 </cn>
+                    </apply>
+                    <cn> 2 </cn>
+                    <pi/>
+                  </apply>
+                  <ci> injection_interval </ci>
+                </apply>
+              </apply>
+              <cn> 0.99999999999 </cn>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="cell_volume">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <apply>
+                <plus/>
+                <ci> cell_volume </ci>
+                <ci> injection_volume </ci>
+              </apply>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>
