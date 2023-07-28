@@ -1,8 +1,9 @@
 Parameter,Value
-injection_enthalpy,142.0
-injection_volume,1.6
+injection_enthalpy,710.0
+injection_volume,0.0016
 injection_Prx_mon,70.0
-injection_dimer,1.0
-injection_decamer,8.55
+injection_dimer,0.00128
+injection_decamer,0.013044
 injection_interval,180.0
 first_inject_ratio,1.0
+cell_volume_init,1.4000000000000001

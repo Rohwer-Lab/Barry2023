@@ -403,18 +403,18 @@ do_exH2O2_pulse = False
 # 24 - fTrx1DD
 
 # 1
-!F vPrx2_div_vCat = v_Prx2/v_Cat
+#!F vPrx2_div_vCat = v_Prx2/v_Cat
 
 # 2
 !F f_Prx2_Inhib = (2.0*iSH_iSH+iSH_SH+iSH_SO2H+iSH_SOH+iSH_SS)/t_PSH
 
 # 6
-!F fv_Prx2 = v_Prx2/v_H2O2_consumption
+#!F fv_Prx2 = v_Prx2/v_H2O2_consumption
 !F v_Prx2 = (Prx_R_R_ox()+Prx_O_S_oox()+Prx_R_O2_ox()+Prx_O_O2_oox()+iPrx_R_R_ox()+Prx_R_O_ox()+Prx_R_O_oox()+iPrx_R_O_oox()+Prx_R_S_ox()+Prx_O_O_oox())/Erythrocyte
 # above originally /Compartment_1
 
 # 7
-!F fv_Cat = v_Cat/v_H2O2_consumption
+#!F fv_Cat = v_Cat/v_H2O2_consumption
 !F v_Cat = (Cat_1()+Cat_2())/Erythrocyte
 # above originally /Compartment_1
 

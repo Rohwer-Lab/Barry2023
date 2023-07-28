@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Created with PySCeS (1.1.0) on Sun, 25 Jun 2023 12:40:11 by jr -->
+<!-- Created with PySCeS (1.1.1) on Fri, 28 Jul 2023 17:00:34 by jr -->
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
   <model name="RBC_PRDX2_modelB">
     <listOfFunctionDefinitions>
@@ -724,15 +724,6 @@
           </apply>
         </math>
       </assignmentRule>
-      <assignmentRule variable="fv_Cat">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <divide/>
-            <ci> v_Cat </ci>
-            <ci> v_H2O2_consumption </ci>
-          </apply>
-        </math>
-      </assignmentRule>
       <assignmentRule variable="f_NADPH_TrxR">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
@@ -837,24 +828,6 @@
             <ci> SOH_SS </ci>
             <ci> SS_SO2H </ci>
             <ci> iSH_SS </ci>
-          </apply>
-        </math>
-      </assignmentRule>
-      <assignmentRule variable="vPrx2_div_vCat">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <divide/>
-            <ci> v_Prx2 </ci>
-            <ci> v_Cat </ci>
-          </apply>
-        </math>
-      </assignmentRule>
-      <assignmentRule variable="fv_Prx2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <divide/>
-            <ci> v_Prx2 </ci>
-            <ci> v_H2O2_consumption </ci>
           </apply>
         </math>
       </assignmentRule>

@@ -1387,18 +1387,18 @@ R270_disso:
 # 24 - fTrx1DD
 
 # 1
-!F vPrx2_div_vCat = v_Prx2/v_Cat
+#!F vPrx2_div_vCat = v_Prx2/v_Cat
 
 # 2
 # !F f_Prx2_Inhib = (2.0*iSH_iSH+iSH_SH+iSH_SO2H+iSH_SOH+iSH_SS)/t_PSH
 
 # 6
-!F fv_Prx2 = v_Prx2/v_H2O2_consumption
+#!F fv_Prx2 = v_Prx2/v_H2O2_consumption
 !F v_Prx2 = (Prx_R_R_ox()+Prx_O_S_oox()+Prx_R_O2_ox()+Prx_O_O2_oox()+Prx_R_O_ox()+Prx_R_O_oox()+Prx_R_S_ox()+Prx_O_O_oox())/Erythrocyte 
 # Above originally /Compartment_1
 
 # 7
-!F fv_Cat = v_Cat/v_H2O2_consumption
+#!F fv_Cat = v_Cat/v_H2O2_consumption
 !F v_Cat = (Cat_1()+Cat_2())/Erythrocyte 
 # Above originally /Compartment_1
 
@@ -1583,6 +1583,7 @@ KMTrx1SOH_Trx2SH = 1.83
 KNADPHsequest = 9.6 
 KNADPsequest = 1.8 
 Compartment_1 = 7.17e-14 
+Erythrocyte = 7.17e-14 
 E_NADPH = -0.363658610709 
 NADPtot = 28.0 
 Trxtot = 0.56 

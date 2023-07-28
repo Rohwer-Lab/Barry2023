@@ -357,18 +357,18 @@ do_exH2O2_pulse = False
 # 24 - fTrx1DD
 
 # 1
-!F vPrx2_div_vCat = v_Prx2/v_Cat
+#!F vPrx2_div_vCat = v_Prx2/v_Cat
 
 # 2
 # !F f_Prx2_Inhib = (2.0*iSH_iSH+iSH_SH+iSH_SO2H+iSH_SOH+iSH_SS)/t_PSH
 
 # 6
-!F fv_Prx2 = v_Prx2/v_H2O2_consumption
+#!F fv_Prx2 = v_Prx2/v_H2O2_consumption
 !F v_Prx2 = (Prx_R_R_ox()+Prx_O_S_oox()+Prx_R_O2_ox()+Prx_O_O2_oox()+Prx_R_O_ox()+Prx_R_O_oox()+Prx_R_S_ox()+Prx_O_O_oox())/Erythrocyte 
 # Above originally /Compartment_1
 
 # 7
-!F fv_Cat = v_Cat/v_H2O2_consumption
+#!F fv_Cat = v_Cat/v_H2O2_consumption
 !F v_Cat = (Cat_1()+Cat_2())/Erythrocyte 
 # Above originally /Compartment_1
 
@@ -540,6 +540,7 @@ KMTrx1SOH_Trx2SH = 1.83
 KNADPHsequest = 9.6
 KNADPsequest = 1.8
 Compartment_1 = 7.17e-14
+Erythrocyte = 7.17e-14 # CB added
 E_NADPH = -0.363658610709
 NADPtot = 28.0
 Trxtot = 0.56
@@ -563,50 +564,50 @@ init_for_KNADPHsequest = 9.6
 
 
 
-v_GPx1 = 0.0  # (rule)
+v_GPx1 = 0.0
 ktrx_div_Ktrx1 = 0.0042   # (rule)
 two_times_ktrx_div_Ktrx1 = 0.0084   # (rule)
 KMTrx1SOH_Trx2SOH = 1830.0   # (rule)
 k_NADPsequest = 18000000.0   # (rule)
 k_NADPHsequest = 96000000.0   # (rule)
 kPrx2Inactiv = 1669000000.0 # (rule)
-f_PSO2H = 0.0  # (rule)
-v_H2O2_prod = 0.0  # (rule)
-v_H2O2_consumption = 0.0  # (rule)
-v_Cat = 0.0  # (rule)
+f_PSO2H = 0.0
+v_H2O2_prod = 0.0
+v_H2O2_consumption = 0.0
+v_Cat = 0.0
 f_NADPH = 0.963168867269   # (rule)
-v_Prx2 = 0.0  # (rule)
-f_PSS = 0.0  # (rule)
-f_1SS = 0.0  # (rule)
+v_Prx2 = 0.0
+f_PSS = 0.0
+f_1SS = 0.0
 t_dimers = 285.0    # (rule)
-t_1SS = 0.0  # (rule)
-t_2SS = 0.0  # (rule)
-f_PSOH = 0.0  # (rule)
+t_1SS = 0.0
+t_2SS = 0.0
+f_PSOH = 0.0
 init_for_two_times_ktrx = 0.42
-t_PSO2H = 0.0  # (rule)
+t_PSO2H = 0.0
 f_PSH = 1.0  # (rule)
-f_TrxOO = 0.0  # (rule)
-f_TrxOR = 0.0  # (rule)
-v_NADPH = 0.0  # (rule)
+f_TrxOO = 0.0
+f_TrxOR = 0.0
+v_NADPH = 0.0
 f_TrxR_star = 1.0  # (rule)
 t_Trx = 0.56 # (rule)
-f_2SS = 0.0  # (rule)
-f_TrxRO = 0.0  # (rule)
+f_2SS = 0.0
+f_TrxRO = 0.0
 f_TrxRR = 1.0  # (rule)
-fv_Cat = 0.0  # (rule)
-f_NADPH_TrxR = 0.0  # (rule)
-NADPH_div_H2O2 = 0.0  # (rule)
+fv_Cat = 0.0
+f_NADPH_TrxR = 0.0
+NADPH_div_H2O2 = 0.0
 r_NADPH_free = 26.1509433962    # (rule)
 r_NADPH_all = 99.0 # (rule)
 #r_GS = inf  # (rule)
 f_GSH = 1.0  # (rule)
 #r_Trx = inf  # (rule)
 f_Prx2_Inhib = 1.0  # (rule)
-t_PSS = 0.0  # (rule)
-vPrx2_div_vCat = 0.0  # (rule)
-fv_Prx2 = 0.0  # (rule)
+t_PSS = 0.0
+vPrx2_div_vCat = 0.0
+fv_Prx2 = 0.0
 t_PSH = 570.0    # (rule)
-t_PSOH = 0.0  # (rule)
+t_PSOH = 0.0
 
 ### References (Flag for scripting)
 

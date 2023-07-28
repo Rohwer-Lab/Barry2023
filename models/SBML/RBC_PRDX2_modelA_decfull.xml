@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Created with PySCeS (1.1.0) on Sun, 25 Jun 2023 12:40:11 by jr -->
+<!-- Created with PySCeS (1.1.1) on Fri, 28 Jul 2023 17:00:35 by jr -->
 <sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
   <model name="RBC_PRDX2_modelA">
     <listOfFunctionDefinitions>
@@ -407,6 +407,7 @@
       <parameter id="KNADPHsequest" name="KNADPHsequest" value="9.6" constant="false"/>
       <parameter id="KNADPsequest" name="KNADPsequest" value="1.8" constant="false"/>
       <parameter id="Compartment_1" name="Compartment_1" value="7.17e-14" constant="false"/>
+      <parameter id="Erythrocyte" name="Erythrocyte" value="7.17e-14" constant="false"/>
       <parameter id="E_NADPH" name="E_NADPH" value="-0.363658610709" constant="false"/>
       <parameter id="NADPtot" name="NADPtot" value="28" constant="false"/>
       <parameter id="Trxtot" name="Trxtot" value="0.56" constant="false"/>
@@ -848,15 +849,6 @@
           </apply>
         </math>
       </assignmentRule>
-      <assignmentRule variable="fv_Cat">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <divide/>
-            <ci> v_Cat </ci>
-            <ci> v_H2O2_consumption </ci>
-          </apply>
-        </math>
-      </assignmentRule>
       <assignmentRule variable="f_NADPH_TrxR">
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <apply>
@@ -938,24 +930,6 @@
             <ci> SH_SS </ci>
             <ci> SOH_SS </ci>
             <ci> SS_SO2H </ci>
-          </apply>
-        </math>
-      </assignmentRule>
-      <assignmentRule variable="vPrx2_div_vCat">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <divide/>
-            <ci> v_Prx2 </ci>
-            <ci> v_Cat </ci>
-          </apply>
-        </math>
-      </assignmentRule>
-      <assignmentRule variable="fv_Prx2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-          <apply>
-            <divide/>
-            <ci> v_Prx2 </ci>
-            <ci> v_H2O2_consumption </ci>
           </apply>
         </math>
       </assignmentRule>
