@@ -99,11 +99,9 @@ what is being done.
 
 5. `RBC_PRDX2_sims`
     - **Requires:** PRDX1 dimer-decamer fitted parameters.
-    - **Requires:** RBC PRDX2 Model A (`RBC_PRDX2_modelA.psc`), RBC PRDX2 Model B (`RBC_PRDX2_modelB.psc`) 
-      and RBC PRDX2 Model   A with decamerisation (`RBC_PRDX2_modelA_decfull.psc`) as well as the PRDX1 dimer-decamer 
-      fitted parameters.
+    - **Requires:** RBC PRDX2 Model A (`RBC_PRDX2_modelA.psc`), RBC PRDX2 Model B (`RBC_PRDX2_modelB.psc`) and RBC PRDX2 Model A with decamerisation (`RBC_PRDX2_modelA_decfull.psc`) as well as the PRDX1 dimer-decamer fitted parameters.
     - **Analysis:** replicates the analyses of Benfeitas 2014 comparing the three RBC PRDX2 models.
-    - **Plot:** Figures 6 and S3-S6
+    - **Plot:** Figures 6, S3-S6, S9a and S9b
 
 
 6. `dilution_assay`
@@ -115,17 +113,16 @@ what is being done.
 
 7. `HRP_assay`
     - **Requires:** PRDX1 dimer-decamer fitted parameters.
-    - **Requires:** HRP PRDX2 model (`HRP_PRDX2.psc`) and the HRP PRDX2 with decamerisation model (`HRP_PRDX2_decfull.psc`).
+    - **Requires:** HRP PRDX2 model (`HRP_PRDX2.psc`), HRP PRDX2 with decamerisation model (`HRP_PRDX2_decfull.psc`) and the HRP PRDX2 with decamerisation and 5 disulphide-bridges model (`HRP_PRDX2_decfull_5dsb.psc`).
     - **Analysis:** simulations of HRP competition assays with PRDX2.
-    - **Plot:** Figures 7a, 7b, 8c, and 8d
+    - **Plot:** Figures 7a, 7b, 8c, 8d, S8a, S8b, S9c and S9d
 
 
 8. `NADPH_assay`
     - **Requires** PRDX1 dimer-decamer fitted parameters.
-    - **Requires:** PRDX2 cycle model (`PRDX2_sys.psc`) and the PRDX2 cycle with decamerisation model (`PRDX2_sys_decfull.psc`).
-    - **Analysis:** simulations of  NADPH reduction assays in a system containing Prx, Trx, TRR, and 
-      H<sub>2</sub>O<sub>2</sub>.
-    - **Plot:** Figure 7c and 7d
+    - **Requires:** PRDX2 cycle model (`PRDX2_sys.psc`), PRDX2 cycle with decamerisation model (`PRDX2_sys_decfull.psc`) and the PRDX2 cycle with decamerisation and 5 disulphide-bridges model (`PRDX2_sys_decfull_5dsb.psc`).
+    - **Analysis:** simulations of  NADPH reduction assays in a system containing Prx, Trx, TRR, and H<sub>2</sub>O<sub>2</sub>.
+    - **Plot:** Figure 7c, 7d, S8c, S8d, S9e and S9f
 
 ## Writing the models in the paper
 
@@ -142,7 +139,8 @@ what is being done.
 1. `algorithm_Prx_decfull_rxns`
     - **Analysis:** Enumerates the peroxidase reactions of Prx decamers using the algorithm described in the manuscript.
     - **Writes:** Prx decamer peroxidase reactions _without_ hyperoxidation (`Prx decamer reactions - no hyperoxidation.txt`).
-
+    - **Writes:** Prx decamer peroxidase reactions with 5 disulphide-bridges and _without_ hyperoxidation (`Prx decamer reactions - no hyperoxidation 5dsb.txt`).
+    - 
 2. `write_models`
     - **Requires:** Prx decamer peroxidase reactions _without_ hyperoxidation.
     - **Requires:** RBC PRDX2 Model A (`RBC_PRDX2_modelA.psc`).
@@ -150,6 +148,6 @@ what is being done.
     - **Writes:** ITC Prx dimer-decamer equilibrium model (`ITC_Prx_dim-dec.psc`).
     - **Writes:** RBC PRDX2 Model A with decamerisation (`RBC_PRDX2_modelA_decfull.psc`).
     - **Writes:** Prx dimer-decamer dilution model (`Prx_dim-dec_dil.psc`).
-    - **Writes:** HRP PRDX2 model (`HRP_PRDX2.psc`) and the HRP PRDX2 with decamerisation model (`HRP_PRDX2_decfull.psc`).
-    - **Writes:** PRDX2 cycle model (`PRDX2_sys.psc`) and the PRDX2 cycle with decamerisation model (`PRDX2_sys_decfull.psc`).
+    - **Writes:** HRP PRDX2 model (`HRP_PRDX2.psc`), HRP PRDX2 with decamerisation model (`HRP_PRDX2_decfull.psc`) and the HRP PRDX2 with decamerisation and 5 disulphide-bridges model (`HRP_PRDX2_decfull_5dsb.psc`).
+    - **Writes:** PRDX2 cycle model (`PRDX2_sys.psc`), PRDX2 cycle with decamerisation model (`PRDX2_sys_decfull.psc`) and the PRDX2 cycle with decamerisation and 5 disulphide-bridges model (`PRDX2_sys_decfull_5dsb.psc`).
 
