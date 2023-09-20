@@ -2,7 +2,9 @@
 
 ### Christopher J. Barry, Ché S. Pillay, Johann M. Rohwer
 
-Submitted to _Antioxidants_
+_Antioxidants_ __2023__, _12_(9), 1707; https://doi.org/10.3390/antiox12091707
+
+# Supplementary Code and Data
 
 This repository contains supplementary code, data and model descriptions to
 reproduce the simulations in the manuscript.
